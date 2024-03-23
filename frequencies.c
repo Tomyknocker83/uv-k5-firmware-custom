@@ -223,6 +223,9 @@ int32_t TX_freq_check(const uint32_t Frequency)
 			break;
 
 		case F_LOCK_ALL:
+			for (uint32_t i = 0; i < ARRAY_SIZE(frequencyBandTable); i++)
+				if (Frequency >= frequencyBandTable[i].lower && Frequency < frequencyBandTable[i].upper)
+					return 0;
 			break;
 
 		case F_LOCK_NONE:
